@@ -1,0 +1,84 @@
+
+{
+  "nom": "Alexandre Dupont",
+  "titre": "Développeur Python spécialisé en cybersécurité",
+  "contact": {
+    "email": "alexandre.dupont@example.com",
+    "telephone": "06 23 45 67 89",
+    "localisation": "Paris, France"
+  },
+  "resume": "Développeur Python avec 3 ans d'expérience en cybersécurité, expert en audit de code, pentesting applicatif et automatisation de scans de vulnérabilités. Diplômé de l'EFREI Paris, j'ai conduit des projets de conteneurisation Docker réduisant les temps d'analyse de 35% et renforçant la posture de sécurité des applications critiques.",
+  "competences": [
+    "Python",
+    "Audit de code sécurisé",
+    "Pentesting applicatif",
+    "Automatisation de scans (Nessus, OpenVAS)",
+    "Docker & conteneurisation",
+    "CI/CD (GitLab CI)",
+    "Analyse de vulnérabilités",
+    "Scripting Bash"
+  ],
+  "experiences": [
+    {
+      "poste": "Ingénieur Sécurité Logicielle",
+      "entreprise": "SecureTech Solutions",
+      "periode": "2022 - Présent",
+      "missions": [
+        "Conçu et automatisé un pipeline d'analyse de code Python avec SonarQube, réduisant les vulnérabilités détectées de 28% en 6 mois",
+        "Développé des scripts Python pour orchestrer des scans de vulnérabilités sur plus de 200 conteneurs Docker, diminuant le temps moyen de scan de 40%",
+        "Réalisé des tests d'intrusion applicatifs sur des plateformes SaaS, identifiant et corrigeant plus de 150 failles critiques",
+        "Mise en place de la conteneurisation Docker des environnements de test, accélérant le déploiement des scénarios de pentest de 35%"
+      ]
+    },
+    {
+      "poste": "Analyste Sécurité Junior",
+      "entreprise": "TechGuard Labs",
+      "periode": "2020 - 2022",
+      "missions": [
+        "Audité le code source de 30 projets Python, détectant et corrigeant 120 vulnérabilités de type injection et XSS",
+        "Automatisé la génération de rapports de vulnérabilités avec Python et Jinja2, réduisant le temps de reporting de 25%",
+        "Participé à des campagnes de pentesting interne, contribuant à la remédiation de 95% des failles identifiées"
+      ]
+    },
+    {
+      "poste": "Consultant Sécurité Cloud",
+      "entreprise": "Thales",
+      "periode": "2023 - 2024",
+      "missions": [
+        "Conçu et déployé une architecture sécurisée sur AWS et Kubernetes, diminuant les incidents de configuration de 42% en 12 mois",
+        "Automatisé la conformité des clusters Kubernetes via des scripts Python et Terraform, accélérant les audits de sécurité de 30%",
+        "Intégré des scans de vulnérabilités containerisés avec Trivy et Clair dans le pipeline CI/CD, réduisant les images vulnérables en production de 38%"
+      ]
+    }
+  ],
+  "projets": [
+    {
+      "nom": "VulnScan Automation",
+      "description": "Plateforme Python automatisant le lancement de scans Nessus, l'agrégation des résultats et la création de tickets Jira, permettant de traiter 500+ vulnérabilités mensuelles avec un gain de temps de 30%",
+      "technologies": [
+        "Python",
+        "Nessus API",
+        "Jira API",
+        "Docker",
+        "Flask"
+      ]
+    },
+    {
+      "nom": "SecureDocker CI",
+      "description": "Intégration d'un pipeline CI/CD Docker sécurisé qui scanne les images avec Trivy et applique des politiques de conformité, réduisant les images vulnérables en production de 45%",
+      "technologies": [
+        "Docker",
+        "GitLab CI",
+        "Trivy",
+        "Python"
+      ]
+    }
+  ],
+  "formations": [
+    {
+      "diplome": "Diplôme d'Ingénieur en Informatique",
+      "etablissement": "EFREI Paris",
+      "annee": "2020"
+    }
+  ]
+}

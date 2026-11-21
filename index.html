@@ -1,13 +1,124 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>smartcv</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
-  </body>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SmartCV — Générateur & Analyseur IA</title>
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+<body>
+  <!-- Barre supérieure minimale -->
+  <header class="topbar no-print">
+    <button id="btnLogoHome" class="brand">Smart<span>CV</span></button>
+    <div class="topbar-actions">
+      <div class="lang-switch" role="group" aria-label="Langue">
+        <button type="button" class="lang-btn active" data-lang="fr">FR</button>
+        <button type="button" class="lang-btn" data-lang="en">EN</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- VUE 1 : ACCUEIL (2 grosses cartes) -->
+  <main id="viewHome" class="view view-home">
+    <div class="hero">
+      <h1>Votre assistant CV propulsé par l'IA</h1>
+      <p>Créez un CV structuré sur-mesure par conversation ou auditez votre CV PDF face à une offre cible.</p>
+    </div>
+
+    <div class="cards-grid">
+      <button id="cardGoGenerator" class="choice-card">
+        <div class="card-icon">✦</div>
+        <h2>Créer un CV</h2>
+        <p>Décrivez votre parcours, vos compétences ou votre poste cible. L'IA génère un CV A4 prêt à exporter et modifiable en direct.</p>
+        <span class="card-cta">Commencer →</span>
+      </button>
+
+      <button id="cardGoAnalyzer" class="choice-card">
+        <div class="card-icon">◈</div>
+        <h2>Analyser un CV</h2>
+        <p>Déposez votre CV au format PDF et indiquez le poste visé. Obtenez un score ATS, vos points forts et des pistes d'amélioration.</p>
+        <span class="card-cta">Auditer mon PDF →</span>
+      </button>
+    </div>
+  </main>
+
+  <!-- VUE 2 : GÉNÉRATEUR DE CV (Aperçu central + Barre IA en bas) -->
+  <main id="viewGenerator" class="view view-workspace hidden">
+    <div class="workspace-toolbar no-print">
+      <button class="btn-back" data-nav="home">← Accueil</button>
+      <div class="toolbar-right">
+        <button id="btnToggleRawJson" class="btn-ghost hidden">Voir JSON</button>
+        <button id="btnExportPdf" class="btn-primary hidden">Exporter en PDF</button>
+      </div>
+    </div>
+
+    <!-- Zone centrale : message d'invite ou feuille A4 -->
+    <div class="workspace-scroll">
+      <div id="genEmptyState" class="empty-prompt-hint">
+        <h3>Décrivez le profil du CV à générer</h3>
+        <p>Exemple : <em>« Développeur Python avec 3 ans d'expérience en cybersécurité, diplômé de l'EFREI, projets en pentest et Docker »</em></p>
+      </div>
+
+      <!-- Feuille A4 rendue par cvRenderer.js -->
+      <div id="cvPreviewContainer" class="a4-wrapper hidden"></div>
+
+      <!-- Vue brute JSON optionnelle pour debug/démo -->
+      <pre id="cvRawJsonBox" class="raw-json-box hidden"></pre>
+    </div>
+
+    <!-- Barre de prompt flottante en bas au milieu -->
+    <div class="bottom-dock no-print">
+      <div id="genStatus" class="status-pill hidden"></div>
+      <form id="genForm" class="ai-input-bar">
+        <textarea
+          id="genPromptInput"
+          rows="1"
+          placeholder="Décrivez votre parcours ou demandez une modification (ex: Ajoute une expérience chez Thales)..."
+          required
+        ></textarea>
+        <button type="submit" id="genSubmitBtn" class="send-btn" title="Envoyer (Entrée)">↑</button>
+      </form>
+    </div>
+  </main>
+
+  <!-- VUE 3 : ANALYSEUR DE CV PDF (Résultats en haut/milieu + Dropzone en bas) -->
+  <main id="viewAnalyzer" class="view view-workspace hidden">
+    <div class="workspace-toolbar no-print">
+      <button class="btn-back" data-nav="home">← Accueil</button>
+      <span class="toolbar-hint">Extraction locale via PDF.js (aucun fichier envoyé sur un serveur)</span>
+    </div>
+
+    <!-- Zone centrale haute : résultats de l'IA -->
+    <div class="workspace-scroll">
+      <div id="anaEmptyState" class="empty-prompt-hint">
+        <h3>Audit ATS & Recruteur</h3>
+        <p>Glissez votre CV PDF ci-dessous et précisez le poste visé pour recevoir une note sur 100 et des recommandations ciblées.</p>
+      </div>
+
+      <div id="analysisResultContainer" class="analysis-wrapper hidden"></div>
+    </div>
+
+    <!-- Zone inférieure centrée : Poste cible + Drag & Drop PDF -->
+    <div class="bottom-dock bottom-dock-analyzer no-print">
+      <div id="anaStatus" class="status-pill hidden"></div>
+      <form id="anaForm" class="analyzer-dock-card">
+        <div id="dropZone" class="drop-zone">
+          <input type="file" id="pdfFileInput" accept="application/pdf" hidden />
+          <span id="dropZoneLabel">Glissez-déposez votre CV (.pdf) ici ou <strong>parcourez</strong></span>
+        </div>
+        <div class="analyzer-bottom-row">
+          <input
+            type="text"
+            id="targetRoleInput"
+            placeholder="Poste cible (ex : Data Scientist Junior, Développeur Fullstack...)"
+            required
+          />
+          <button type="submit" id="anaSubmitBtn" class="btn-primary">Analyser</button>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
 </html>

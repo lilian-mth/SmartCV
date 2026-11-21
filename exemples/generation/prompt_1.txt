@@ -1,0 +1,4 @@
+Développeur Python avec 3 ans d'expérience en cybersécurité, 
+diplômé d'une école d'ingénieurs (EFREI Paris). 
+Spécialisé en audit de code, pentesting applicatif, 
+automatisation de scans de vulnérabilités et conteneurisation Docker.
